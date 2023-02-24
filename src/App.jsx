@@ -1,16 +1,20 @@
 
 import './App.css'
 
-import { TableCentrifugo } from './components/TableCentrifugo'
-import { TableAbsorcion } from './components/TableAbsorcion'
+import { Tables } from './components/Tables'
+import { DistritoTermico } from './components/DistritoTermico'
+import { useState } from 'react'
+import { NavBar } from './components/Navbar'
 
 function App () {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname)
   return (
-    <>
+    <main>
+      <NavBar />
+      {currentPath === '/' && <DistritoTermico />}
 
-      <TableCentrifugo />
-      <TableAbsorcion />
-    </>
+      {currentPath === '/tables' && <Tables />}
+    </main>
   )
 }
 
