@@ -46,7 +46,7 @@ h2 a {
   font-weight: bold;
   font-size: 1em;
   text-align: left;
-  color: #185875;
+  color: #4DC3FA
 }
 
 .container td {
@@ -112,8 +112,30 @@ h2 a {
   transition-timing-function: line;
 }
 
+.logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  margin-top: 15px;
+}
 
+.menu li {
+  list-style: none;
+}
 
+a {
+  color:white;
+  text-decoration:none;
+ font-size: 30px;
+ color: #4DC3FA
+}
+
+.navbar-li{
+  display: inline;
+  padding: 10px;
+}
 
 @media (max-width: 800px) {
 

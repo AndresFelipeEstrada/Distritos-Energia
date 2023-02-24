@@ -2,13 +2,13 @@ export const NavBar = () => {
   return (
     <nav id='navbar' class=''>
       <div class='nav-wrapper'>
-        <div class='logo'>
-          <a href='#home'><i class='fa fa-angellist' /> Logo</a>
+        <div>
+          <a href='/'><img src='src/assets/logo.png' alt='' className='logo' /></a>
         </div>
 
         <ul id='menu'>
-          <li><a href='#home'>Home</a></li>
-          <li><a href='#services'>Services</a></li>
+          <li className='navbar-li'><a href='/'>Inicio</a></li>
+          <li className='navbar-li'><a href='/tables'>Tablas</a></li>
         </ul>
       </div>
     </nav>
