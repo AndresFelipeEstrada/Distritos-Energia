@@ -1,4 +1,5 @@
-export const Tables = () => {
+
+export const Tables = ({ caudal, temp1, temp2, servicio, total }) => {
   return (
     <>
       <div className='tables'>
@@ -16,7 +17,7 @@ export const Tables = () => {
           <tbody>
             <tr>
               <td>Red Publica</td>
-              <td>9518</td>
+              <td>suma</td>
               <td>6369</td>
               <td>01:32:50</td>
             </tr>

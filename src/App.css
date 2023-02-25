@@ -126,15 +126,112 @@ h2 a {
 }
 
 a {
-  color:white;
-  text-decoration:none;
- font-size: 30px;
- color: #4DC3FA
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  color: #4DC3FA
 }
 
-.navbar-li{
+.navbar-li {
   display: inline;
   padding: 10px;
+}
+
+.signupFrm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.form {
+  background-color: #1F2739;
+  width: 400px;
+  border-radius: 10px;
+  padding: 20px 40px;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+}
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin-bottom: 17px;
+}
+
+.input {
+  color: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #DADCE0;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 5px 20px;
+  outline: none;
+  background: none;
+  z-index: 1;
+}
+
+.label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding:  4px;
+  color: #DADCE0;
+  font-size: 16px;
+  transition: 0.5s;
+  z-index: 0;
+}
+
+::placeholder {
+  color: transparent;
+}
+
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  padding: 15px 30px;
+  border: none;
+  border-color: white;
+  background-color: #4DC3FA;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submitBtn:hover {
+  background-color: #4DC3FA;
+  transform: translateY(-2px);
+}
+
+.input:focus+.label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4DC3FA;
+}
+
+.input:focus {
+  border: 2px solid #4DC3FA;
+}
+
+.input:not(:placeholder-shown)+ .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.error {
+  color: red;
 }
 
 @media (max-width: 800px) {
