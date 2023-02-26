@@ -9,9 +9,9 @@ export const useForm = () => {
   const [servicio, setServicio] = useState('')
 
   const [centrifugo, setCentrifugo] = useState('')
-  const [cantCentrifugo, setCantCentrifugo] = useState('')
+  const [cantCentrifugo, setCantCentrifugo] = useState(1)
   const [absorcion, setAbsorcion] = useState('')
-  const [cantAbsorcion, setCantAbsorcion] = useState('')
+  const [cantAbsorcion, setCantAbsorcion] = useState(1)
 
   useEffect(() => {
     if (caudal === '' || temp1 === '' || temp2 === '' || servicio === '' || cantCentrifugo === '' || cantAbsorcion === '') {
