@@ -230,6 +230,16 @@ a {
   font-weight: 600;
 }
 
+.select1{
+  z-index: 999;
+}
+
+.select2{
+  z-index: 100;
+}
+
+
+
 .error {
   color: red;
 }

@@ -8,7 +8,13 @@ import { useState } from 'react'
 import { customStyles } from './logic/selectStyles'
 
 function App () {
-  const { caudal, setCaudal, temp1, setTemp1, temp2, setTemp2, servicio, setServicio, error } = useForm('')
+  const {
+    caudal, setCaudal,
+    temp1, setTemp1,
+    temp2, setTemp2,
+    servicio, setServicio,
+    error
+  } = useForm('')
 
   const [centrifugo, setCentrifugo] = useState('')
   const [cantCentrifugo, setCantCentrifugo] = useState('')
@@ -55,22 +61,24 @@ function App () {
             <label className='label'>Servicio:</label>
           </div>
 
-          <div className='column'>
-            <div className='inputContainer'>
+          <div className=''>
+            <div className='inputContainer select1'>
               <Select styles={customStyles} options={selectOptios} onChange={e => setCentrifugo(e.value)} placeholder='chiller centrifugos:' />
             </div>
 
-            <div className='inputContainer columnCant'>
-              <input className='input' type='text' placeholder='Cantidad' />
+            <div className='inputContainer'>
+              <input className='input' type='text' placeholder='Cantidad' onChange={e => setCantCentrifugo(e.target.value)} value={cantCentrifugo} />
               <label className='label'>Cantidad:</label>
             </div>
+          </div>
 
-            <div className='inputContainer columnSelect'>
+          <div className=''>
+            <div className='inputContainer select2'>
               <Select styles={customStyles} options={selectOptios} onChange={e => setAbsorcion(e.value)} placeholder='chiller absorcion:' />
             </div>
 
-            <div className='inputContainer columnCant'>
-              <input className='input' type='text' placeholder='Cantidad' />
+            <div className='inputContainer'>
+              <input className='input' type='text' placeholder='Cantidad' onChange={e => setCantAbsorcion(e.target.value)} value={cantAbsorcion} />
               <label className='label'>Cantidad:</label>
             </div>
           </div>

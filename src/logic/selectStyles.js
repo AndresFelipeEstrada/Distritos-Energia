@@ -4,7 +4,7 @@ export const customStyles = {
     ...base,
     border: '1px solid #DADCE0',
     height: '55px',
-    width: '120%',
+    width: '112%',
     background: 'none',
     fontSize: '16px',
     borderRadius: '10px',
