@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { Tables } from './components/Tables'
 import { useForm } from './hooks/useForm'
 import { useState } from 'react'
+import { selectStyle } from './logic/selectStyles'
 
 function App () {
   const { caudal, setCaudal, temp1, setTemp1, temp2, setTemp2, servicio, setServicio, error } = useForm('')
@@ -24,38 +25,6 @@ function App () {
     { label: '700', value: 700 },
     { label: '1000', value: 1000 }
   ]
-
-  // position: relative;
-  // height: 45px;
-  // width: 90%;
-  // margin-bottom: 17px;
-  const customStyles = {
-    control: (base, state) => ({
-      ...base,
-      border: '1px solid #DADCE0',
-      height: '45px',
-      width: '90%',
-      marginBottom: '17px',
-      background: 'none',
-      padding: '5px 20px',
-      fontSize: '16px',
-      borderRadius: '10px',
-      '&:hover': {
-        borderColor: state.isFocused ? '#4DC3FA' : 'white'
-      }
-    }),
-    menu: base => ({
-      ...base,
-      background: '#1F2739',
-      color: 'white',
-      borderRadius: 0,
-      marginTop: 0
-    }),
-    menuList: base => ({
-      ...base,
-      padding: 0
-    })
-  }
 
   return (
 
@@ -86,7 +55,7 @@ function App () {
           </div>
 
           <div className='inputContainer'>
-            <Select styles={customStyles} options={selectOptios} onChange={e => setSelect(e.value)} placeholder='chiller:' />
+            <Select styles={selectStyle()} options={selectOptios} onChange={e => setSelect(e.value)} placeholder='chiller:' />
           </div>
 
           <button className='submitBtn'>Enviar</button>
