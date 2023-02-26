@@ -1,5 +1,5 @@
 
-export const Tables = ({ caudal, temp1, temp2, servicio, total }) => {
+export const Tables = ({ caudal, temp1, temp2, servicio, total, centrifugo, absorcion }) => {
   return (
     <>
       <div className='tables'>

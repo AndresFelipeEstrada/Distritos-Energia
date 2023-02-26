@@ -111,14 +111,32 @@ h2 a {
   transition-property: all;
   transition-timing-function: line;
 }
+.total-container{
+  text-align:center;
+}
 
-.logo {
-  display: inline-block;
-  vertical-align: top;
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
-  margin-top: 15px;
+.dt{
+  color: white;
+  display:inline-block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+
+.container p:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+  transition-timing-function: line;
+  
 }
 
 .menu li {
@@ -179,7 +197,7 @@ a {
   position: absolute;
   top: 15px;
   left: 15px;
-  padding:  4px;
+  padding: 4px;
   color: #DADCE0;
   font-size: 16px;
   transition: 0.5s;
@@ -222,7 +240,7 @@ a {
   border: 2px solid #4DC3FA;
 }
 
-.input:not(:placeholder-shown)+ .label {
+.input:not(:placeholder-shown)+.label {
   top: -7px;
   left: 3px;
   z-index: 10;
@@ -230,11 +248,11 @@ a {
   font-weight: 600;
 }
 
-.select1{
+.select1 {
   z-index: 999;
 }
 
-.select2{
+.select2 {
   z-index: 100;
 }
 

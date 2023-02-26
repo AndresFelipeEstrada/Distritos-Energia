@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { Tables } from './components/Tables'
 import { useForm } from './hooks/useForm'
 import { customStyles, selectOptios } from './logic/selectLogic'
+import { statics } from './logic/statics'
 
 function App () {
   const {
@@ -23,7 +24,7 @@ function App () {
     event.preventDefault()
   }
 
-  const total = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * 1000 * 0.0003069))
+  const total = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * statics.global1 * statics.global2))
 
   return (
 
@@ -81,11 +82,11 @@ function App () {
         </form>
       </div>
 
-      <p>Tamaño del DT (En TR) : {total}</p>
-      <p>{centrifugo}</p>
-      <p>{absorcion}</p>
+      <div className='container total-container'>
+        <p className='dt'>Tamaño del DT (En TR) : {total}</p>
+      </div>
 
-      <Tables caudal={caudal} temp1={temp1} temp2={temp2} servicio={servicio} total={total} />
+      <Tables caudal={caudal} temp1={temp1} temp2={temp2} servicio={servicio} total={total} centrifugo={centrifugo} absorcion={absorcion} />
     </>
   )
 }
