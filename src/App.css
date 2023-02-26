@@ -234,6 +234,7 @@ a {
   color: red;
 }
 
+
 @media (max-width: 800px) {
 
   .container td:nth-child(4),
