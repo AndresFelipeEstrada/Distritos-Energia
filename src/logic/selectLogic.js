@@ -24,3 +24,9 @@ export const customStyles = {
     padding: 0
   })
 }
+
+export const selectOptios = [
+  { label: '500', value: 500 },
+  { label: '750', value: 750 },
+  { label: '1000', value: 1000 }
+]

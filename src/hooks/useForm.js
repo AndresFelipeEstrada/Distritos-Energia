@@ -8,8 +8,13 @@ export const useForm = () => {
   const [temp2, setTemp2] = useState('')
   const [servicio, setServicio] = useState('')
 
+  const [centrifugo, setCentrifugo] = useState('')
+  const [cantCentrifugo, setCantCentrifugo] = useState('')
+  const [absorcion, setAbsorcion] = useState('')
+  const [cantAbsorcion, setCantAbsorcion] = useState('')
+
   useEffect(() => {
-    if (caudal === '' || temp1 === '' || temp2 === '' || servicio === '') {
+    if (caudal === '' || temp1 === '' || temp2 === '' || servicio === '' || cantCentrifugo === '' || cantAbsorcion === '') {
       setError('Los campos no pueden estar vacios')
       return
     }
@@ -20,7 +25,25 @@ export const useForm = () => {
     }
 
     setError(null)
-  }, [caudal, temp1, temp2, servicio])
+  }, [caudal, temp1, temp2, servicio, cantCentrifugo, cantAbsorcion])
 
-  return { error, caudal, setCaudal, temp1, setTemp1, temp2, setTemp2, servicio, setServicio }
+  return {
+    error,
+    caudal,
+    setCaudal,
+    temp1,
+    setTemp1,
+    temp2,
+    setTemp2,
+    servicio,
+    setServicio,
+    centrifugo,
+    setCentrifugo,
+    cantCentrifugo,
+    setCantCentrifugo,
+    absorcion,
+    setAbsorcion,
+    cantAbsorcion,
+    setCantAbsorcion
+  }
 }

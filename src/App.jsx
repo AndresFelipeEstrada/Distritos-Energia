@@ -4,8 +4,7 @@ import Select from 'react-select'
 
 import { Tables } from './components/Tables'
 import { useForm } from './hooks/useForm'
-import { useState } from 'react'
-import { customStyles } from './logic/selectStyles'
+import { customStyles, selectOptios } from './logic/selectLogic'
 
 function App () {
   const {
@@ -13,25 +12,18 @@ function App () {
     temp1, setTemp1,
     temp2, setTemp2,
     servicio, setServicio,
+    centrifugo, setCentrifugo,
+    absorcion, setAbsorcion,
+    cantCentrifugo, setCantCentrifugo,
+    cantAbsorcion, setCantAbsorcion,
     error
-  } = useForm('')
-
-  const [centrifugo, setCentrifugo] = useState('')
-  const [cantCentrifugo, setCantCentrifugo] = useState('')
-  const [absorcion, setAbsorcion] = useState('')
-  const [cantAbsorcion, setCantAbsorcion] = useState('')
+  } = useForm()
 
   const handleSubmit = (event) => {
     event.preventDefault()
   }
 
-  const total = (Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * 1000 * 0.0003069).toFixed(0)
-
-  const selectOptios = [
-    { label: '500', value: 500 },
-    { label: '750', value: 750 },
-    { label: '1000', value: 1000 }
-  ]
+  const total = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * 1000 * 0.0003069))
 
   return (
 
