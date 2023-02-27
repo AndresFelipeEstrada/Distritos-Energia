@@ -2,7 +2,7 @@
 export const Tables = ({ caudal, temp1, temp2, servicio, total, centrifugo, absorcion }) => {
   return (
     <>
-      <div className='tables'>
+      <div className='tables' id='1'>
         <h1>Centrifugo</h1>
 
         <table className='container'>

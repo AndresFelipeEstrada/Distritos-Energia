@@ -2,10 +2,10 @@
 import './App.css'
 import Select from 'react-select'
 
+import { statics } from './logic/statics'
 import { Tables } from './components/Tables'
 import { useForm } from './hooks/useForm'
 import { customStyles, selectOptios } from './logic/selectLogic'
-import { statics } from './logic/statics'
 
 function App () {
   const {
@@ -22,6 +22,11 @@ function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    const element = document.getElementById('1')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   const total = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * statics.global1 * statics.global2))
@@ -76,8 +81,7 @@ function App () {
             </div>
           </div>
 
-          <button className='submitBtn'>Enviar</button>
-
+          <button className='submitBtn'><a href='#1' />Mostrar</button>
           {error && <p className='error'>{error}</p>}
         </form>
       </div>
