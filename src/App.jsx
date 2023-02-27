@@ -81,7 +81,10 @@ function App () {
             </div>
           </div>
 
-          <button className='submitBtn'><a href='#1' />Mostrar</button>
+          <a href='1'>
+            <button className='submitBtn'>Mostrar</button>
+          </a>
+
           {error && <p className='error'>{error}</p>}
         </form>
       </div>
