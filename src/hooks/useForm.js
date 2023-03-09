@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const useForm = () => {
   const [error, setError] = useState(null)
@@ -9,11 +9,18 @@ export const useForm = () => {
   const [servicio, setServicio] = useState('')
 
   const [centrifugo, setCentrifugo] = useState('')
-  const [cantCentrifugo, setCantCentrifugo] = useState(1)
+  const [cantCentrifugo, setCantCentrifugo] = useState(0)
   const [absorcion, setAbsorcion] = useState('')
-  const [cantAbsorcion, setCantAbsorcion] = useState(1)
+  const [cantAbsorcion, setCantAbsorcion] = useState(0)
+
+  const primerInput = useRef(true)
 
   useEffect(() => {
+    if (primerInput.current) {
+      primerInput.current = caudal === ''
+      return
+    }
+
     if (caudal === '' || temp1 === '' || temp2 === '' || servicio === '' || cantCentrifugo === '' || cantAbsorcion === '') {
       setError('Los campos no pueden estar vacios')
       return
@@ -21,6 +28,11 @@ export const useForm = () => {
 
     if ((servicio < 1) || (servicio > 3)) {
       setError('El servicio no puede ser mayor a 3 ni menor que 1')
+      return
+    }
+
+    if (isNaN(cantCentrifugo) || isNaN(cantAbsorcion)) {
+      setError('Las cantidades deben ser en numeros')
       return
     }
 

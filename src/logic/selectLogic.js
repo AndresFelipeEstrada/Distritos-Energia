@@ -11,6 +11,7 @@ export const customStyles = {
     '&:hover': {
       borderColor: state.isFocused ? '#4DC3FA' : 'white'
     }
+
   }),
   menu: base => ({
     ...base,
@@ -22,6 +23,10 @@ export const customStyles = {
   menuList: base => ({
     ...base,
     padding: 0
+  }),
+  placeholder: base => ({
+    ...base,
+    color: 'white'
   })
 }
 

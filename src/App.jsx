@@ -6,6 +6,7 @@ import { statics } from './logic/statics'
 import { Tables } from './components/Tables'
 import { useForm } from './hooks/useForm'
 import { customStyles, selectOptios } from './logic/selectLogic'
+import { useMemo } from 'react'
 
 function App () {
   const {
@@ -13,8 +14,10 @@ function App () {
     temp1, setTemp1,
     temp2, setTemp2,
     servicio, setServicio,
+
     centrifugo, setCentrifugo,
     absorcion, setAbsorcion,
+
     cantCentrifugo, setCantCentrifugo,
     cantAbsorcion, setCantAbsorcion,
     error
@@ -28,6 +31,16 @@ function App () {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
+
+  const potenciaChillerCentrifugo = useMemo(() => {
+    const total = centrifugo * cantCentrifugo
+    return total
+  }, [centrifugo, cantCentrifugo])
+
+  const potenciaChillerAbsorcion = useMemo(() => {
+    const total = absorcion * cantAbsorcion
+    return total
+  }, [absorcion, cantAbsorcion])
 
   const total = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * statics.global1 * statics.global2))
 
@@ -60,8 +73,14 @@ function App () {
           </div>
 
           <div className=''>
-            <div className='inputContainer select1'>
-              <Select styles={customStyles} options={selectOptios} onChange={e => setCentrifugo(e.value)} placeholder='chiller centrifugos:' />
+            <div className='inputContainer select select1'>
+              <Select
+                styles={customStyles}
+                options={selectOptios}
+                onChange={e => setCentrifugo(e.value)}
+                placeholder='chiller centrifugos:'
+
+              />
             </div>
 
             <div className='inputContainer'>
@@ -72,7 +91,12 @@ function App () {
 
           <div className=''>
             <div className='inputContainer select2'>
-              <Select styles={customStyles} options={selectOptios} onChange={e => setAbsorcion(e.value)} placeholder='chiller absorcion:' />
+              <Select
+                styles={customStyles}
+                options={selectOptios}
+                onChange={e => setAbsorcion(e.value)}
+                placeholder='chiller absorcion:'
+              />
             </div>
 
             <div className='inputContainer'>
@@ -93,7 +117,7 @@ function App () {
         <p className='dt'>Tamaño del DT (En TR) : {total}</p>
       </div>
 
-      <Tables caudal={caudal} temp1={temp1} temp2={temp2} servicio={servicio} total={total} centrifugo={centrifugo} absorcion={absorcion} />
+      <Tables total={total} totalCentrifugo={potenciaChillerCentrifugo} totalAbsorcion={potenciaChillerAbsorcion} />
     </>
   )
 }
