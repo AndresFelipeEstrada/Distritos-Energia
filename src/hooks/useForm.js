@@ -9,9 +9,9 @@ export const useForm = () => {
   const [servicio, setServicio] = useState('')
 
   const [centrifugo, setCentrifugo] = useState('')
-  const [cantCentrifugo, setCantCentrifugo] = useState(0)
+  const [cantCentrifugo, setCantCentrifugo] = useState('')
   const [absorcion, setAbsorcion] = useState('')
-  const [cantAbsorcion, setCantAbsorcion] = useState(0)
+  const [cantAbsorcion, setCantAbsorcion] = useState('')
 
   const primerInput = useRef(true)
 

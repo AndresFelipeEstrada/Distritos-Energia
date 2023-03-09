@@ -1,4 +1,3 @@
-
 import { TableToExcelReact } from 'table-to-excel-react'
 
 export const Tables = ({ totalCentrifugo, totalAbsorcion }) => {
