@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { statics } from '../logic/statics'
 
 export const useForm = () => {
   const [error, setError] = useState(null)
@@ -14,6 +15,12 @@ export const useForm = () => {
   const [cantAbsorcion, setCantAbsorcion] = useState('')
 
   const primerInput = useRef(true)
+
+  const potenciaChillerCentrifugo = centrifugo * cantCentrifugo
+  const potenciaChillerAbsorcion = absorcion * cantAbsorcion
+  const totalChillers = potenciaChillerCentrifugo + potenciaChillerAbsorcion
+  const tamanioDT = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * statics.global1 * statics.global2))
+  const tMax = tamanioDT + (tamanioDT * 0.5)
 
   useEffect(() => {
     if (primerInput.current) {
@@ -36,6 +43,15 @@ export const useForm = () => {
       return
     }
 
+    if (totalChillers < tamanioDT) {
+      setError('El total suministrad esta por debajo del Tamaño del DT')
+      return
+    }
+
+    if (totalChillers >= tMax) {
+      setError('El total suministrado excede el Tamaño del DT')
+    }
+
     setError(null)
   }, [caudal, temp1, temp2, servicio, cantCentrifugo, cantAbsorcion])
 
@@ -49,13 +65,16 @@ export const useForm = () => {
     setTemp2,
     servicio,
     setServicio,
-    centrifugo,
+
     setCentrifugo,
     cantCentrifugo,
     setCantCentrifugo,
-    absorcion,
+
     setAbsorcion,
     cantAbsorcion,
-    setCantAbsorcion
+    setCantAbsorcion,
+    tamanioDT,
+    potenciaChillerCentrifugo,
+    potenciaChillerAbsorcion
   }
 }

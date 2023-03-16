@@ -1,11 +1,26 @@
 import { TableToExcelReact } from 'table-to-excel-react'
 
-export const Tables = ({ totalCentrifugo, totalAbsorcion }) => {
+export const Tables = ({ totalCentrifugo: parametro1, totalAbsorcion: parametro2 }) => {
   // CALCULOS TABLA CENTRIFUGA
-  const rp = Math.floor(totalCentrifugo * 0.3190995427365)
+  // Formulas Centrifugo
+  const rp = Math.floor(parametro1 * 0.3190995427365)
+  const gas = Math.floor((parametro1 * 511.13199046407) / 1000)
+  const gCapex = Math.floor((parametro1 * 0.0035174111853) * (1925000 / 0.88))
+  const gOpex = Math.floor(gCapex * 0.03)
+
+  const solarCapex = Math.floor(parametro1 * 0.0035174111853)
+  const ft = Math.floor(solarCapex * 1000000)
+  const eCapex = Math.floor(solarCapex * 1700000)
+  const bCapex = Math.floor(solarCapex * 2000000)
 
   // CALCULOS TABLA ABSORCION
-  const gas = Math.floor((totalAbsorcion * 511.13199046407) / 1000)
+  const gasAbsorcion = Math.floor((parametro2 * 511.13199046407) / 1000)
+  const gasCapexAbsorcion = Math.floor(((parametro2 * 0.0035174111853) * (1925000 / 0.88)))
+  const gasOpexAbsorcion = Math.floor(gasCapexAbsorcion * 0.03)
+
+  const solarCapexAbsorcion = Math.floor(parametro2 * 0.0035174111853)
+  // const ftAbsorcion = (solarCapexAbsorcion * 1000000) * 1.015
+  const bioAbsorcion = Math.floor(solarCapexAbsorcion * 2000000)
 
   return (
     <>
@@ -26,40 +41,40 @@ export const Tables = ({ totalCentrifugo, totalAbsorcion }) => {
               <tr>
                 <td>Red Publica</td>
                 <td>{rp}</td>
-                <td>1-2</td>
-                <td>1-3</td>
+                <td>{0}</td>
+                <td>{0}</td>
               </tr>
               <tr>
                 <td>Microturbina Gas</td>
-                <td>2-1</td>
-                <td>2-2</td>
-                <td>2-3</td>
+                <td>{gas}</td>
+                <td>{gCapex}</td>
+                <td>{gOpex}</td>
               </tr>
               <tr>
                 <td>Solar Fotovoltaica</td>
-                <td>3-1</td>
-                <td>3-2</td>
-                <td>3-3</td>
+                <td>{ft}</td>
+                <td>{solarCapex}</td>
+                <td>{0}</td>
               </tr>
               <tr>
                 <td>Energia Eolica</td>
-                <td>4-1</td>
-                <td>4-2</td>
-                <td>4-3</td>
+                <td>{0}</td>
+                <td>{eCapex}</td>
+                <td>{0}</td>
               </tr>
               <tr>
                 <td>Energia Biomasa</td>
-                <td>5-1</td>
-                <td>5-2</td>
-                <td>5-3</td>
+                <td>{0}</td>
+                <td>{bCapex}</td>
+                <td>{0}</td>
               </tr>
               <tr>
                 <td>Toneladas de refrigeracion que sumistran <br /> los chillers
                   de adsorcion seleccionados es:
                 </td>
-                <td>6-1</td>
-                <td>6-2</td>
-                <td>6-3</td>
+                <td>{parametro1}</td>
+                <td>{0}</td>
+                <td>{0}</td>
               </tr>
             </tbody>
           </table>
@@ -77,29 +92,29 @@ export const Tables = ({ totalCentrifugo, totalAbsorcion }) => {
             <tbody>
               <tr>
                 <td>Microturbina Gas</td>
-                <td>{gas}</td>
-                <td>1-2</td>
-                <td>1-3</td>
+                <td>{gasAbsorcion}</td>
+                <td>{gasCapexAbsorcion}</td>
+                <td>{gasOpexAbsorcion}</td>
               </tr>
               <tr>
                 <td>Solar Termica</td>
-                <td>2-1</td>
-                <td>2-2</td>
-                <td>2-3</td>
+                <td>{0}</td>
+                <td>{solarCapexAbsorcion}</td>
+                <td>{0}</td>
               </tr>
               <tr>
                 <td>Energia Biomasa</td>
-                <td>3-1</td>
-                <td>3-2</td>
-                <td>3-3</td>
+                <td>{0}</td>
+                <td>{bioAbsorcion}</td>
+                <td>{0}</td>
               </tr>
               <tr>
                 <td>Toneladas de refrigeracion que sumistran <br /> los chillers
                   de adsorcion seleccionados es:
                 </td>
-                <td>4-1</td>
-                <td>4-2</td>
-                <td>4-3</td>
+                <td>{parametro2}</td>
+                <td>{0}</td>
+                <td>{0}</td>
               </tr>
             </tbody>
           </table>

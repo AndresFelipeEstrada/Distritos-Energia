@@ -2,11 +2,9 @@
 import './App.css'
 import Select from 'react-select'
 
-import { statics } from './logic/statics'
 import { Tables } from './components/Tables'
 import { useForm } from './hooks/useForm'
 import { customStyles, selectOptios } from './logic/selectLogic'
-import { useMemo } from 'react'
 
 function App () {
   const {
@@ -15,12 +13,15 @@ function App () {
     temp2, setTemp2,
     servicio, setServicio,
 
-    centrifugo, setCentrifugo,
-    absorcion, setAbsorcion,
+    setCentrifugo,
+    setAbsorcion,
 
     cantCentrifugo, setCantCentrifugo,
     cantAbsorcion, setCantAbsorcion,
-    error
+    error, tamanioDT,
+
+    potenciaChillerCentrifugo,
+    potenciaChillerAbsorcion
   } = useForm()
 
   const handleSubmit = (event) => {
@@ -31,18 +32,6 @@ function App () {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
-
-  const potenciaChillerCentrifugo = useMemo(() => {
-    const total = centrifugo * cantCentrifugo
-    return total
-  }, [centrifugo, cantCentrifugo])
-
-  const potenciaChillerAbsorcion = useMemo(() => {
-    const total = absorcion * cantAbsorcion
-    return total
-  }, [absorcion, cantAbsorcion])
-
-  const total = Math.floor((Number(caudal) * (Number(temp1) - Number(temp2)) * Number(servicio) * statics.global1 * statics.global2))
 
   return (
 
@@ -114,10 +103,10 @@ function App () {
       </div>
 
       <div className='container total-container'>
-        <p className='dt'>Tamaño del DT (En TR) : {total}</p>
+        <p className='dt'>Tamaño del DT (En TR) : {tamanioDT}</p>
       </div>
 
-      <Tables total={total} totalCentrifugo={potenciaChillerCentrifugo} totalAbsorcion={potenciaChillerAbsorcion} />
+      <Tables totalCentrifugo={potenciaChillerCentrifugo} totalAbsorcion={potenciaChillerAbsorcion} />
     </>
   )
 }
